@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WebViewController.h
 //  MeetUp
 //
 //  Created by Andrew Liu on 11/3/14.
@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
 
-@interface ViewController : UIViewController
-
+@interface WebViewController : UIViewController
+@property Event *eventWebDetail;
 
 @end
-
