@@ -19,6 +19,7 @@
 		49BB73091A087CD7009BDA59 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73081A087CD7009BDA59 /* WebViewController.m */; };
 		49BB73151A08A5D2009BDA59 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73141A08A5D2009BDA59 /* MemberViewController.m */; };
 		49BB73181A08AE30009BDA59 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73171A08AE30009BDA59 /* Comment.m */; };
+		49BB731B1A093CFB009BDA59 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB731A1A093CFB009BDA59 /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		49BB73141A08A5D2009BDA59 /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
 		49BB73161A08AE30009BDA59 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		49BB73171A08AE30009BDA59 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		49BB73191A093CFB009BDA59 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		49BB731A1A093CFB009BDA59 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 			children = (
 				49A2187B1A0822A700AD3AA9 /* AppDelegate.h */,
 				49A2187C1A0822A700AD3AA9 /* AppDelegate.m */,
+				49BB73191A093CFB009BDA59 /* CustomTableViewCell.h */,
+				49BB731A1A093CFB009BDA59 /* CustomTableViewCell.m */,
 				49A2187E1A0822A700AD3AA9 /* RootViewController.h */,
 				49A2187F1A0822A700AD3AA9 /* RootViewController.m */,
 				49BB73001A083D97009BDA59 /* DetailViewController.h */,
@@ -257,6 +262,7 @@
 				49A2187D1A0822A700AD3AA9 /* AppDelegate.m in Sources */,
 				49BB73051A084820009BDA59 /* Event.m in Sources */,
 				49A2187A1A0822A700AD3AA9 /* main.m in Sources */,
+				49BB731B1A093CFB009BDA59 /* CustomTableViewCell.m in Sources */,
 				49BB73021A083D97009BDA59 /* DetailViewController.m in Sources */,
 				49BB73151A08A5D2009BDA59 /* MemberViewController.m in Sources */,
 				49BB73181A08AE30009BDA59 /* Comment.m in Sources */,

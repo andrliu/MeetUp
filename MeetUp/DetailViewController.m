@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "WebViewController.h"
 #import "MemberViewController.h"
+#import "CustomTableViewCell.h"
 #import "Comment.h"
 
 @interface DetailViewController () <UITableViewDataSource, UITableViewDataSource>
@@ -89,16 +90,31 @@
      ];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CustomTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell" forIndexPath:indexPath];
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell" forIndexPath:indexPath];
 
     NSDictionary *resultDictionary = self.jsonCommentArray [indexPath.row];
 
-    cell.textLabel.text = resultDictionary[@"member_name"];
+    cell.nameLabel.text = resultDictionary[@"member_name"];
 
-    cell.detailTextLabel.text = resultDictionary[@"comment"];
-    
+    cell.commentLabel.text = resultDictionary[@"comment"];
+
+    NSNumber *time = resultDictionary[@"time"];
+
+    time = @([time floatValue] / 1000);
+
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[time floatValue]];
+
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+
+    NSString *theDate = [dateFormat stringFromDate:date];
+
+    cell.dateLabel.text = theDate;
+
+
     return cell;
 }
 
