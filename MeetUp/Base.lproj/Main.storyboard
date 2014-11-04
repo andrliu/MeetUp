@@ -107,11 +107,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8m-7o-KXn">
-                                <rect key="frame" x="16" y="126" width="288" height="397"/>
+                                <rect key="frame" x="16" y="126" width="288" height="207"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cws-Ce-gd9">
-                                <rect key="frame" x="121" y="528" width="78" height="30"/>
+                                <rect key="frame" x="121" y="338" width="78" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="78" id="kj0-EB-zDj"/>
                                     <constraint firstAttribute="height" constant="30" id="tf2-an-dKu"/>
@@ -120,7 +120,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="eventPageOnButtonPressed:" destination="jrg-7J-Iqq" eventType="touchUpInside" id="zwJ-yb-sQd"/>
                                     <segue destination="3f5-Jx-YNl" kind="push" identifier="webSegue" id="gL7-NI-gp1"/>
                                 </connections>
                             </button>
@@ -133,6 +132,37 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JY7-3A-ZgI">
+                                <rect key="frame" x="0.0" y="370" width="320" height="196"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" textLabel="1GF-qa-jCe" detailTextLabel="GfR-xB-3oL" style="IBUITableViewCellStyleSubtitle" id="6zT-HE-8jG">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6zT-HE-8jG" id="lsR-rW-RIr">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1GF-qa-jCe">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GfR-xB-3oL">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jrg-7J-Iqq" id="MuQ-3C-uxs"/>
+                                    <outlet property="delegate" destination="jrg-7J-Iqq" id="OKM-QQ-LCW"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -140,11 +170,15 @@
                             <constraint firstItem="isF-H3-fbY" firstAttribute="leading" secondItem="1Zc-ic-onn" secondAttribute="leadingMargin" constant="-16" id="7Sa-ua-9ay"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q8m-7o-KXn" secondAttribute="trailing" id="GiY-3C-INh"/>
                             <constraint firstItem="Q8m-7o-KXn" firstAttribute="leading" secondItem="1Zc-ic-onn" secondAttribute="leadingMargin" id="HRq-gA-sIO"/>
-                            <constraint firstItem="2rN-nJ-U3v" firstAttribute="top" secondItem="cws-Ce-gd9" secondAttribute="bottom" constant="10" id="NJZ-JT-h1D"/>
+                            <constraint firstItem="2rN-nJ-U3v" firstAttribute="top" secondItem="cws-Ce-gd9" secondAttribute="bottom" constant="200" id="NJZ-JT-h1D"/>
+                            <constraint firstItem="JY7-3A-ZgI" firstAttribute="leading" secondItem="1Zc-ic-onn" secondAttribute="leadingMargin" constant="-16" id="O1T-6I-hnF"/>
                             <constraint firstItem="cws-Ce-gd9" firstAttribute="top" secondItem="Q8m-7o-KXn" secondAttribute="bottom" constant="5" id="SOf-mL-7cl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JY7-3A-ZgI" secondAttribute="trailing" constant="-16" id="TLO-ZU-062"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="JY7-3A-ZgI" secondAttribute="bottom" constant="2" id="eja-1y-SLo"/>
                             <constraint firstItem="iAe-gX-Cph" firstAttribute="top" secondItem="x4K-MZ-Lcp" secondAttribute="bottom" constant="5" id="fbR-4R-mE0"/>
                             <constraint firstAttribute="centerX" secondItem="cws-Ce-gd9" secondAttribute="centerX" id="g2L-Vq-NyY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="isF-H3-fbY" secondAttribute="trailing" constant="-16" id="h0j-78-Q0O"/>
+                            <constraint firstItem="JY7-3A-ZgI" firstAttribute="top" secondItem="cws-Ce-gd9" secondAttribute="bottom" constant="2" id="jAt-9n-6Wt"/>
                             <constraint firstItem="isF-H3-fbY" firstAttribute="top" secondItem="iAe-gX-Cph" secondAttribute="bottom" constant="2" id="pKU-ex-aDq"/>
                             <constraint firstAttribute="centerX" secondItem="iAe-gX-Cph" secondAttribute="centerX" id="x23-Ft-FcB"/>
                         </constraints>
@@ -152,6 +186,7 @@
                     <navigationItem key="navigationItem" id="Tij-Ek-0pd"/>
                     <connections>
                         <outlet property="RSVPLabel" destination="iAe-gX-Cph" id="PmQ-mg-k90"/>
+                        <outlet property="commentTableView" destination="JY7-3A-ZgI" id="Nfp-zm-22h"/>
                         <outlet property="eventView" destination="Q8m-7o-KXn" id="6wW-UU-ePN"/>
                         <outlet property="groupLabel" destination="isF-H3-fbY" id="8qf-OL-vrY"/>
                     </connections>

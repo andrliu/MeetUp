@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *eventTableView;
 @property (strong, nonatomic) NSDictionary *jsonDictionary;
 @property (strong, nonatomic) NSArray *jsonArray;
-@property (strong, nonatomic) NSDictionary *eventDictionary;
 @property (strong, nonatomic) NSMutableArray *eventArray;
 @property (strong, nonatomic) NSString *api;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;

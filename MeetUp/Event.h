@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSNumber *count;
+@property (strong, nonatomic) NSNumber *groupID;
+@property (strong, nonatomic) NSNumber *eventID;
 @property (strong, nonatomic) NSDictionary *group;
 @property (strong, nonatomic) NSString *groupInfo;
 @property (strong, nonatomic) NSString *eventDescription;
