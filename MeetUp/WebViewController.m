@@ -21,6 +21,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.navigationItem.title = self.eventWebDetail.name;
+
     NSURL *url = [NSURL URLWithString :self.eventWebDetail.url];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL : url];
     [self.eventPageWebView loadRequest : urlRequest];

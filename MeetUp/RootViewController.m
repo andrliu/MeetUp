@@ -10,15 +10,16 @@
 #import "DetailViewController.h"
 #import "Event.h"
 
-#define kMeetUp @"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=4970561d7a144e22212a20546191a45"
+#define kMeetUp @"https://api.meetup.com/2/open_events.json?text=mobile&time=,1w&key=4970561d7a144e22212a20546191a45"
 
-@interface RootViewController () <UITableViewDataSource, UITableViewDataSource>
+@interface RootViewController () <UITableViewDataSource, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *eventTableView;
 @property (strong, nonatomic) NSDictionary *jsonDictionary;
 @property (strong, nonatomic) NSArray *jsonArray;
 @property (strong, nonatomic) NSDictionary *eventDictionary;
 @property (strong, nonatomic) NSMutableArray *eventArray;
 @property (strong, nonatomic) NSString *api;
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 
 @end
 
@@ -30,11 +31,17 @@
 
     self.eventArray = [[NSMutableArray alloc]init];
 
-    NSURL *url = [NSURL URLWithString:kMeetUp];
+    [self loadAPI:kMeetUp];
 
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+}
 
-    [NSURLConnection sendAsynchronousRequest:request
+- (void)loadAPI: (NSString *)theURL
+{
+    NSURL *url = [NSURL URLWithString:theURL];
+
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+
+    [NSURLConnection sendAsynchronousRequest:urlRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
                         {
@@ -70,7 +77,19 @@
                                }
                         }
     ];
+}
 
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString *urlString = [NSString stringWithFormat:@"https://api.meetup.com/2/open_events.json?text=%@&time=,1w&key=4970561d7a144e22212a20546191a45", self.searchTextField.text];
+
+    [self loadAPI: urlString];
+
+    self.searchTextField.text = [NSString stringWithFormat:@""];
+
+    return YES;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,7 +108,7 @@
 
     NSString *state = venueDictionary[@"state"];
 
-    NSString *address = [NSString stringWithFormat:@"%@, %@, %@ 60604", street, city, state];
+    NSString *address = [NSString stringWithFormat:@"%@, %@, %@", street, city, state];
 
     cell.detailTextLabel.text = address;
 
