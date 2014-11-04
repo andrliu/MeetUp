@@ -17,6 +17,8 @@
 		49BB73021A083D97009BDA59 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73011A083D97009BDA59 /* DetailViewController.m */; };
 		49BB73051A084820009BDA59 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73041A084820009BDA59 /* Event.m */; };
 		49BB73091A087CD7009BDA59 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73081A087CD7009BDA59 /* WebViewController.m */; };
+		49BB73151A08A5D2009BDA59 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73141A08A5D2009BDA59 /* MemberViewController.m */; };
+		49BB73181A08AE30009BDA59 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BB73171A08AE30009BDA59 /* Comment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,10 @@
 		49BB73041A084820009BDA59 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		49BB73071A087CD7009BDA59 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		49BB73081A087CD7009BDA59 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		49BB73131A08A5D2009BDA59 /* MemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
+		49BB73141A08A5D2009BDA59 /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
+		49BB73161A08AE30009BDA59 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		49BB73171A08AE30009BDA59 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,8 @@
 				49BB73011A083D97009BDA59 /* DetailViewController.m */,
 				49BB73071A087CD7009BDA59 /* WebViewController.h */,
 				49BB73081A087CD7009BDA59 /* WebViewController.m */,
+				49BB73131A08A5D2009BDA59 /* MemberViewController.h */,
+				49BB73141A08A5D2009BDA59 /* MemberViewController.m */,
 				49A218811A0822A700AD3AA9 /* Main.storyboard */,
 				49BB73061A08482A009BDA59 /* Model */,
 				49A218841A0822A700AD3AA9 /* Images.xcassets */,
@@ -138,6 +146,8 @@
 			children = (
 				49BB73031A084820009BDA59 /* Event.h */,
 				49BB73041A084820009BDA59 /* Event.m */,
+				49BB73161A08AE30009BDA59 /* Comment.h */,
+				49BB73171A08AE30009BDA59 /* Comment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -248,6 +258,8 @@
 				49BB73051A084820009BDA59 /* Event.m in Sources */,
 				49A2187A1A0822A700AD3AA9 /* main.m in Sources */,
 				49BB73021A083D97009BDA59 /* DetailViewController.m in Sources */,
+				49BB73151A08A5D2009BDA59 /* MemberViewController.m in Sources */,
+				49BB73181A08AE30009BDA59 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

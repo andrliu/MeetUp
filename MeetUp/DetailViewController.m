@@ -8,6 +8,8 @@
 
 #import "DetailViewController.h"
 #import "WebViewController.h"
+#import "MemberViewController.h"
+#import "Comment.h"
 
 @interface DetailViewController () <UITableViewDataSource, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UILabel *RSVPLabel;
@@ -16,8 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *commentTableView;
 @property (strong, nonatomic) NSDictionary *jsonCommentDictionary;
 @property (strong, nonatomic) NSArray *jsonCommentArray;
+@property (strong, nonatomic) NSMutableArray *commentArray;
 @property (strong, nonatomic) NSString *commentURL;
-
 
 @end
 
@@ -26,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.commentArray = [[NSMutableArray alloc]init];
 
     self.navigationItem.title = self.eventDetail.name;
 
@@ -50,31 +54,38 @@
     [NSURLConnection sendAsynchronousRequest:urlRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-     {
-         if (connectionError)
-         {
+                     {
+                         if (connectionError)
+                         {
 
-             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
-                                                                            message:connectionError.localizedDescription
-                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
+                                                                                            message:connectionError.localizedDescription
+                                                                                     preferredStyle:UIAlertControllerStyleAlert];
 
-             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel"
-                                                              style:UIAlertActionStyleDefault
-                                                            handler:nil];
-             [alert addAction:action];
+                             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                              style:UIAlertActionStyleDefault
+                                                                            handler:nil];
+                             [alert addAction:action];
 
-             [self presentViewController:alert animated:YES completion:nil];
-         }
-         else
-         {
-             self.jsonCommentDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                   options:0
-                                                                     error:nil];
-             self.jsonCommentArray = self.jsonCommentDictionary [@"results"];
+                             [self presentViewController:alert animated:YES completion:nil];
+                         }
+                         else
+                         {
+                             self.jsonCommentDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                                   options:0
+                                                                                     error:nil];
+                             self.jsonCommentArray = self.jsonCommentDictionary [@"results"];
 
-             [self.commentTableView reloadData];
-         }
-     }
+
+                             for (NSDictionary *dictionary in self.jsonCommentArray)
+                             {
+                                 Comment *comment = [[Comment alloc] initWithDictionary:dictionary];
+                                 [self.commentArray addObject:comment];
+                             }
+
+                             [self.commentTableView reloadData];
+                         }
+                     }
      ];
 }
 
@@ -96,11 +107,22 @@
     return self.jsonCommentArray.count;
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)webSegue
 {
-    WebViewController *wvc = segue.destinationViewController;
-    wvc.eventWebDetail = self.eventDetail;
-
+    if ([segue.identifier isEqual:@"webSegue"])
+    {
+        WebViewController *wvc = segue.destinationViewController;
+        wvc.eventWebDetail = self.eventDetail;
+    }
+    else
+    {
+        MemberViewController *mvc = segue.destinationViewController;
+        NSInteger rowNumber = [self.commentTableView indexPathForSelectedRow].row;
+        Comment *comment  = [self.commentArray objectAtIndex:rowNumber];
+        mvc.commentDetail = comment;
+    }
 }
+
+
 
 @end

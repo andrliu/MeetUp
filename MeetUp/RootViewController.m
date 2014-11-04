@@ -43,38 +43,38 @@
     [NSURLConnection sendAsynchronousRequest:urlRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-                        {
-                               if (connectionError)
-                               {
+                {
+                       if (connectionError)
+                       {
 
-                                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
-                                                                                                  message:connectionError.localizedDescription
-                                                                                           preferredStyle:UIAlertControllerStyleAlert];
+                           UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Error"
+                                                                                          message:connectionError.localizedDescription
+                                                                                   preferredStyle:UIAlertControllerStyleAlert];
 
-                                   UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel"
-                                                                                    style:UIAlertActionStyleDefault
-                                                                                  handler:nil];
-                                   [alert addAction:action];
+                           UIAlertAction *action = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                            style:UIAlertActionStyleDefault
+                                                                          handler:nil];
+                           [alert addAction:action];
 
-                                   [self presentViewController:alert animated:YES completion:nil];
-                               }
-                               else
-                               {
-                                   self.jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                                      options:0
-                                                                                        error:nil];
-                                   self.jsonArray = self.jsonDictionary [@"results"];
+                           [self presentViewController:alert animated:YES completion:nil];
+                       }
+                       else
+                       {
+                           self.jsonDictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                              options:0
+                                                                                error:nil];
+                           self.jsonArray = self.jsonDictionary [@"results"];
 
 
-                                   for (NSDictionary *dictionary in self.jsonArray)
-                                   {
-                                       Event *event = [[Event alloc] initWithDictionary:dictionary];
-                                       [self.eventArray addObject:event];
-                                   }
+                           for (NSDictionary *dictionary in self.jsonArray)
+                           {
+                               Event *event = [[Event alloc] initWithDictionary:dictionary];
+                               [self.eventArray addObject:event];
+                           }
 
-                                   [self.eventTableView reloadData];
-                               }
-                        }
+                           [self.eventTableView reloadData];
+                       }
+                }
     ];
 }
 
